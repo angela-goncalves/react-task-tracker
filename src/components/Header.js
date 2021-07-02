@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import { Button } from "./Button";
-import { AiOutlineDown } from "react-icons/ai";
+import { AiOutlineUp } from "react-icons/ai";
 
 const Header = ({ title, showTask, onAdd }) => {
   const onClick = () => {
@@ -13,8 +13,8 @@ const Header = ({ title, showTask, onAdd }) => {
         className="text-white bg-list border-2 border-black p-4 rounded-md"
         onClick={onClick}
       >
-        <AiOutlineDown
-          className={`text-gray-200 ${!showTask ? "" : "transform rotate-180"}`}
+        <AiOutlineUp
+          className={`text-gray-200 ${!showTask ? "transform rotate-180" : ""}`}
         />
       </Button>
     </header>
