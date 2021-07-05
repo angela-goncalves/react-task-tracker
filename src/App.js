@@ -9,11 +9,6 @@ function App() {
   const [showTask, setShowTask] = useState(true);
   const [tasks, setTasks] = useLocalStorage("tasks", []);
 
-  //update tasks
-  const toggleReminder = () => {
-    console.log("hi");
-  };
-
   const deleteTask = async (id) => {
     setTasks(tasks.filter((task) => task.id !== id));
   };
@@ -26,14 +21,16 @@ function App() {
   };
   console.log(tasks);
   return (
-    <div className="flex flex-col w-full justify-center max-w-lg mx-auto">
+    <div className="flex flex-col w-full mx-auto items-center z-0 space-y-10">
       <Header title="Tasks Tracker" showTask={showTask} onAdd={setShowTask} />
       {showTask && <AddTask onAdd={addTask} />}
-      {tasks && tasks.length > 0 ? (
-        <Tasks tasks={tasks} onToggle={toggleReminder} onDelete={deleteTask} />
-      ) : (
-        <p>No tasks to show</p>
-      )}
+      <div className="w-full h-full flex flex-col justify-center z-10">
+        {tasks && tasks.length > 0 ? (
+          <Tasks tasks={tasks} onDelete={deleteTask} />
+        ) : (
+          <p>No tasks to show</p>
+        )}
+      </div>
     </div>
   );
 }

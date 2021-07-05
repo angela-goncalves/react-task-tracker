@@ -1,15 +1,12 @@
 import { useState } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 
-export default function Task({ tasks, onDelete, onToggle }) {
+export default function Task({ tasks, onDelete }) {
   const [edit, setEdit] = useState(false);
 
   return (
     <div
-      className={`bg-list text-gray-400 my-4 ${
-        tasks.reminder ? "border-l-4 border-green-400" : ""
-      }`}
-      onDoubleClick={() => onToggle(tasks.id)}
+      className="bg-list text-gray-400 my-4"
       onClick={() => setEdit(true)}
       onBlur={() => setEdit(false)}
     >

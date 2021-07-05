@@ -3,9 +3,6 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
-      backgroundImage: (theme) => ({
-        headerBg: "url('/src/headerBg.jpg')",
-      }),
       colors: {
         list: "#25273c",
         text: "#65677e",
