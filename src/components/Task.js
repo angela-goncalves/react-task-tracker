@@ -3,19 +3,32 @@ import { AiOutlineClose } from "react-icons/ai";
 
 //intentar pisar el objeto
 
-export default function Task({ task, onDelete }) {
+export default function Task({ task, onDelete, setTasks, tasks }) {
   const [edit, setEdit] = useState(false);
-  console.log(task);
   const [inputValue, setInputValue] = useState(task.title);
-  const handleOnChange = (title, index) => (e) => {
-    let newTasks = task.map((item, i) => {
-      if (index === i) {
-        return { ...item, [title]: e.target.value };
-      } else {
-        return item;
+
+  const handleOnChange = (e) => {
+    setInputValue(e.target.value);
+    const temp = tasks.map((item) => {
+      if (item.id === task.id) {
+        return {
+          ...item,
+          title: e.target.value,
+        };
       }
+      return item;
     });
-    setInputValue(newTasks);
+    //Find index of specific object using findIndex method.
+    // const objIndex = tasks.findIndex((obj) => obj.id === task.id);
+
+    // //Log object to Console.
+    // console.log("Before update: ", tasks[objIndex]);
+
+    // //Update object's name property.
+
+    // const temp = tasks[objIndex].title = e.target.value;
+
+    setTasks(temp);
   };
   return (
     <div
