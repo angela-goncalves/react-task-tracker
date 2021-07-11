@@ -1,11 +1,11 @@
 import Task from "./Task";
 
-export default function Tasks({ tasks, onDelete }) {
+export default function Tasks({ tasks, onDelete, setTasks }) {
   return (
-    <ul className="">
+    <ul className="w-full">
       {tasks.map((task, index) => (
         <li key={index}>
-          <Task tasks={task} onDelete={onDelete} />
+          <Task task={task} onDelete={onDelete} setTasks={setTasks} />
         </li>
       ))}
     </ul>

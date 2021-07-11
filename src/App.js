@@ -14,19 +14,17 @@ function App() {
   };
 
   const addTask = (task) => {
-    console.log(task);
     const id = Math.floor(Math.random() * 10000) + 1;
     const newTask = { id, ...task };
     setTasks([...tasks, newTask]);
   };
-  console.log(tasks);
   return (
-    <div className="flex flex-col w-full mx-auto items-center z-0 space-y-10">
+    <div className="flex flex-col items-center justify-center">
       <Header title="Tasks Tracker" showTask={showTask} onAdd={setShowTask} />
-      {showTask && <AddTask onAdd={addTask} />}
-      <div className="w-full h-full flex flex-col justify-center z-10">
+      <div className="px-4 py-16 md:px-20 w-full max-w-4xl 2xl:max-w-5xl h-full flex flex-col items-center space-y-10">
+        {showTask && <AddTask onAdd={addTask} />}
         {tasks && tasks.length > 0 ? (
-          <Tasks tasks={tasks} onDelete={deleteTask} />
+          <Tasks tasks={tasks} setTasks={setTasks} onDelete={deleteTask} />
         ) : (
           <p>No tasks to show</p>
         )}
