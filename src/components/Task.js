@@ -1,36 +1,26 @@
 import { useState } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 
-export default function Task({ task, onDelete }) {
+export default function Task({ task, onDelete, setTasks, onEdit }) {
   const [edit, setEdit] = useState(false);
-  const [inputValue, setInputValue] = useState(() => {
-    try {
-      const item = window.localStorage.getItem("tasks");
-      return item ? JSON.parse(item) : task.title;
-    } catch (error) {
-      return task.title;
-    }
-  });
-
-  const setLocalStorage = (value) => {
-    try {
-      setInputValue(value);
-      window.localStorage.setItem("tasks", value);
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  const [inputValue, setInputValue] = useState("");
 
   const handleOnChange = (e) => {
-    setLocalStorage(e.target.value);
+    setInputValue(e.target.value);
   };
   return (
     <div
       className={`my-4 py-2 w-full ${
         !edit ? "bg-list text-gray-300" : " bg-white text-gray-400"
       } `}
-      onClick={() => setEdit(true)}
-      onBlur={() => setEdit(false)}
+      onClick={() => {
+        setEdit(true);
+        setInputValue(task.title);
+      }}
+      onBlur={() => {
+        setEdit(false);
+        onEdit(inputValue, task.id);
+      }}
     >
       <h3
         className={`flex flex-row justify-between text-xl items-center ${
