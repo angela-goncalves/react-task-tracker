@@ -3,13 +3,13 @@ import "./index.css";
 import Header from "./components/Header";
 import Tasks from "./components/Tasks";
 import AddTask from "./components/AddTask";
-import { useLocalStorage } from "./useLocalStorage";
+//import { useLocalStorage } from "./useLocalStorage";
 
 function App() {
   const [showTask, setShowTask] = useState(true);
-  const [tasks, setTasks] = useLocalStorage("tasks", []);
+  const [tasks, setTasks] = useState([]);
 
-  const deleteTask = async (id) => {
+  const deleteTask = (id) => {
     setTasks(tasks.filter((task) => task.id !== id));
   };
 
@@ -18,6 +18,7 @@ function App() {
     const newTask = { id, ...task };
     setTasks([...tasks, newTask]);
   };
+
   return (
     <div className="flex flex-col items-center justify-center">
       <Header title="Tasks Tracker" showTask={showTask} onAdd={setShowTask} />

@@ -1,34 +1,28 @@
 import { useState } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 
-//intentar pisar el objeto
-
-export default function Task({ task, onDelete, setTasks, tasks }) {
+export default function Task({ task, onDelete }) {
   const [edit, setEdit] = useState(false);
-  const [inputValue, setInputValue] = useState(task.title);
+  const [inputValue, setInputValue] = useState(() => {
+    try {
+      const item = window.localStorage.getItem("tasks");
+      return item ? JSON.parse(item) : task.title;
+    } catch (error) {
+      return task.title;
+    }
+  });
+
+  const setLocalStorage = (value) => {
+    try {
+      setInputValue(value);
+      window.localStorage.setItem("tasks", value);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   const handleOnChange = (e) => {
-    setInputValue(e.target.value);
-    const temp = tasks.map((item) => {
-      if (item.id === task.id) {
-        return {
-          ...item,
-          title: e.target.value,
-        };
-      }
-      return item;
-    });
-    //Find index of specific object using findIndex method.
-    // const objIndex = tasks.findIndex((obj) => obj.id === task.id);
-
-    // //Log object to Console.
-    // console.log("Before update: ", tasks[objIndex]);
-
-    // //Update object's name property.
-
-    // const temp = tasks[objIndex].title = e.target.value;
-
-    setTasks(temp);
+    setLocalStorage(e.target.value);
   };
   return (
     <div
