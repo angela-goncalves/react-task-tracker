@@ -26,18 +26,18 @@ export default function AddTask({ onAdd }) {
       <div className="flex flex-col">
         <label className=""> Task </label>
         <input
-          type="title"
+          type="text"
           placeholder="Create a new task..."
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          className="border-2 border-black p-2"
+          className="border-2 border-black p-2 focus:ring-0 focus:border-black"
         />
       </div>
       <div className="flex space-x-10 justify-between">
         <div className="flex flex-col">
           <label className=""> Day and Time </label>
           <input
-            className="text-gray-600 border-2 tex-base border-black p-2"
+            className="text-gray-600 border-2 tex-base border-black p-2 focus:ring-0 focus:border-black"
             type="date"
             value={day}
             placeholder="day and time"

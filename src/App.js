@@ -33,7 +33,7 @@ function App() {
     const newTask = { id, ...task };
     setTasks([...tasks, newTask]);
     console.log(tasks);
-    window.localStorage.setItem("tasks", JSON.stringify(tasks));
+    window.localStorage.setItem("tasks", JSON.stringify([...tasks, newTask]));
   };
 
   return (

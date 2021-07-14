@@ -15,16 +15,18 @@ const Header = ({ title, showTask, onAdd }) => {
           alt=""
         />
       </div>
-      <div className="w-full flex justify-between p-8 absolute bottom-0 max-w-4xl">
-        <h1 className="text-gray-200 font-medium text-4xl">{title}</h1>
-        <Button
-          className="border-2 bg-gray-400 border-gray-400 p-5 rounded-lg"
-          onClick={onClick}
-        >
-          <AiOutlineUp
-            className={`text-list ${!showTask ? "transform rotate-180" : ""}`}
-          />
-        </Button>
+      <div className="w-full absolute bottom-0 flex justify-center">
+        <div className="w-full flex justify-between p-8 max-w-4xl">
+          <h1 className="text-gray-200 font-medium text-4xl">{title}</h1>
+          <Button
+            className="border-2 bg-gray-400 border-gray-400 p-5 rounded-lg focus:outline-none"
+            onClick={onClick}
+          >
+            <AiOutlineUp
+              className={`text-list ${!showTask ? "transform rotate-180" : ""}`}
+            />
+          </Button>
+        </div>
       </div>
     </header>
   );

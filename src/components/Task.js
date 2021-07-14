@@ -24,7 +24,7 @@ export default function Task({ task, onDelete, setTasks, onEdit }) {
     >
       <h3
         className={`flex flex-row justify-between text-xl items-center ${
-          edit ? "text-list" : "text-gray-300"
+          edit ? "text-list" : "text-gray-200"
         }`}
       >
         {edit ? (
@@ -35,7 +35,7 @@ export default function Task({ task, onDelete, setTasks, onEdit }) {
             onChange={handleOnChange}
           />
         ) : (
-          <p className="p-2">{inputValue}</p>
+          <p className="p-2">{task.title}</p>
         )}
         <div className="flex flex-row justify-around">
           <AiOutlineClose
