@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 
-export default function Task({ task, onDelete, setTasks, onEdit }) {
+export default function Task({ task, onDelete, onEdit }) {
   const [edit, setEdit] = useState(false);
   const [inputValue, setInputValue] = useState("");
 
   const handleOnChange = (e) => {
     setInputValue(e.target.value);
+    onEdit(inputValue, task.id);
   };
   return (
     <div
