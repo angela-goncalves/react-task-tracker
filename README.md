@@ -1,4 +1,4 @@
-<h1>Task Tracker (to-do list)</h1>
+<h1>Task Tracker (to-do list)</h1> with React.js and tailwindcss
 <h2><em>You can add a task and edit it.</em></h2>
 <h3>To edit</h3> 
 <p>click on the task you want to change, and then click anywhere else on the screen. 
